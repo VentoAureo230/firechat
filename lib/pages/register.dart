@@ -1,18 +1,20 @@
-import 'package:firechat/components/login_button.dart';
-import 'package:firechat/components/text_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+import '../components/login_button.dart';
+import '../components/text_field.dart';
+
+class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+  final confirmPasswordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //logo
+
               const Icon(
                 Icons.lock,
                 size: 100,
@@ -34,37 +37,55 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 25,
               ),
-              const Text("Welcome Back !"),
+              const Text("Register to get access !"),
               //email
-              const SizedBox(height: 25,),
+              const SizedBox(
+                height: 25,
+              ),
               LoginTextField(
                 controller: emailTextController,
-                hintText: "johndoe@gmail.com",
+                hintText: "johndoe@email.com",
                 obscureText: false,
               ),
               //password
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               LoginTextField(
                 controller: passwordTextController,
                 hintText: "Password",
                 obscureText: true,
               ),
+
+              //Confirm password
+              const SizedBox(
+                height: 10,
+              ),
+              LoginTextField(
+                controller: confirmPasswordTextController,
+                hintText: "Confirm Password",
+                obscureText: true,
+              ),
               //sign in
-              const SizedBox(height: 25,),
-              LoginButton(onTap: () {}, text: 'Sign In'),
-              //register
+              const SizedBox(
+                height: 25,
+              ),
+              LoginButton(onTap: () {}, text: 'Sign Up'),
+              //Redirect to sign in
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Not a member ? '),
-                  const SizedBox(height: 75,),
+                  const Text('Already have an account ? '),
+                  const SizedBox(
+                    height: 75,
+                  ),
                   GestureDetector(
                     onTap: widget.onTap,
                     child: Text(
-                      'Register now ',
+                      'Log in now',
                       style: TextStyle(
-                        color: Colors.blue.shade400,
-                        fontWeight: FontWeight.bold),
+                          color: Colors.blue.shade400,
+                          fontWeight: FontWeight.bold),
                     ),
                   )
                 ],

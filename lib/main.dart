@@ -1,4 +1,4 @@
-import 'package:firechat/pages/login.dart';
+import 'package:firechat/auth/log_or_reg.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: const LogOrReg(),
     );
   }
 }
