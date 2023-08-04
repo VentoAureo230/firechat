@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../components/login_button.dart';
@@ -16,6 +17,39 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordTextController = TextEditingController();
   final confirmPasswordTextController = TextEditingController();
 
+  void signUp() async {
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    if (passwordTextController.text != confirmPasswordTextController.text) {
+      Navigator.pop(context);
+      displayMessage("Password don't match !");
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailTextController.text,
+          password: passwordTextController.text);
+      if (context.mounted) Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayMessage(e.code);
+    }
+  }
+
+  void displayMessage(String message) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text(message),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +62,6 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //logo
-
               const Icon(
                 Icons.lock,
                 size: 100,
@@ -66,11 +99,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: "Confirm Password",
                 obscureText: true,
               ),
-              //sign in
+              //sign up
               const SizedBox(
                 height: 25,
               ),
-              LoginButton(onTap: () {}, text: 'Sign Up'),
+              LoginButton(onTap: signUp, text: 'Sign Up'),
               //Redirect to sign in
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
