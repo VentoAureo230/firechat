@@ -75,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 25,
               ),
-              LoginTextField(
+              MyTextField(
                 controller: emailTextController,
                 hintText: "johndoe@email.com",
                 obscureText: false,
@@ -84,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 10,
               ),
-              LoginTextField(
+              MyTextField(
                 controller: passwordTextController,
                 hintText: "Password",
                 obscureText: true,
@@ -94,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 10,
               ),
-              LoginTextField(
+              MyTextField(
                 controller: confirmPasswordTextController,
                 hintText: "Confirm Password",
                 obscureText: true,
