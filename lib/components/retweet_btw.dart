@@ -14,7 +14,7 @@ class RetweetButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Icon(
-        isRetweeted ? Icons.compare_arrows_outlined : Icons.favorite_border,
+        isRetweeted ? Icons.compare_arrows_outlined : Icons.compare_arrows_outlined,
         color: isRetweeted ? Colors.blue : Colors.grey,
       ),
     );

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class SignetButton extends StatelessWidget {
-  final bool isSaved;
+  final bool isSigned;
   final Function()? onTap;
-  const SignetButton({super.key, required this.isSaved, required this.onTap});
+  const SignetButton({super.key, required this.isSigned, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Icon(
-        isSaved ? Icons.bookmark : Icons.save,
-        color: isSaved ? Colors.blue : Colors.grey,
+        isSigned ? Icons.bookmark : Icons.bookmark,
+        color: isSigned ? Colors.blue : Colors.grey,
       ),
     );
   }

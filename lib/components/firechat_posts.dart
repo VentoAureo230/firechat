@@ -94,7 +94,40 @@ class _FireChatPostState extends State<FireChatPost> {
 
   @override
   Widget build(BuildContext context) {
-    final currentUser = FirebaseAuth.instance.currentUser;
+    final currentUser = FirebaseAuth.instance.currentUser!;
+    DocumentReference postRef =
+        FirebaseFirestore.instance.collection("User Posts").doc(widget.postId);
+
+    if (isLiked) {
+      postRef.update({
+        "Likes": FieldValue.arrayUnion([currentUser.email])
+      });
+    } else {
+      postRef.update({
+        "Likes": FieldValue.arrayRemove([currentUser.email])
+      });
+    }
+
+    if (isRetweeted) {
+      postRef.update({
+        "Retweets": FieldValue.arrayUnion([currentUser.email])
+      });
+    } else {
+      postRef.update({
+        "Retweets": FieldValue.arrayRemove([currentUser.email])
+      });
+    }
+
+    if (isSigned) {
+      postRef.update({
+        "Signets": FieldValue.arrayUnion([currentUser.email])
+      });
+    } else {
+      postRef.update({
+        "Signets": FieldValue.arrayRemove([currentUser.email])
+      });
+    }
+
     return Row(
       children: [
         Container(
@@ -130,29 +163,51 @@ class _FireChatPostState extends State<FireChatPost> {
                     height: 10,
                   ),
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        // like btn
                         LikeButton(
                           isLiked: isLiked,
                           onTap: toggleLike,
                         ),
-                        // like counter
-                        // retweet btn
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          widget.likes.length.toString(),
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
                         RetweetButton(
                           isRetweeted: isRetweeted,
                           onTap: toggleRetweet,
                         ),
-                        // retweet counter
-                        // signet btn
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          widget.retweets.length.toString(),
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
                         SignetButton(
-                          isSaved: isSigned,
+                          isSigned: isSigned,
                           onTap: toggleSignet,
-                        )
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          widget.signets!.length.toString(),
+                          style: const TextStyle(color: Colors.black),
+                        ),
                       ]),
                 ],
               ),
-              if (widget.user == currentUser?.email)
+              if (widget.user == currentUser.email)
                 DeleteButton(onTap: deletePost)
             ],
           ),
