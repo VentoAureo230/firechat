@@ -28,6 +28,9 @@ class _HomePageState extends State<HomePage> {
       FirebaseFirestore.instance.collection("User Posts").add({
         'UserEmail': currentUser?.email,
         'Message': textController.text,
+        'Likes': [],
+        'Retweets': [],
+        'Signets': [],
         'TimeStamp': Timestamp.now()
       });
       setState(() {
@@ -69,8 +72,11 @@ class _HomePageState extends State<HomePage> {
                     final post = snapshot.data!.docs[index];
                     return FireChatPost(
                       message: post['Message'],
-                      user: post['UserEmail'], 
+                      user: post['UserEmail'],
                       postId: post.id,
+                      likes: List<String>.from(post['Likes'] ?? []),
+                      retweets: List<String>.from(post['Retweets'] ?? []),
+                      signets: List<String>.from(post['Signets']?? []),
                       //time: post['time']
                     );
                   },
