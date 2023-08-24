@@ -145,66 +145,68 @@ class _FireChatPostState extends State<FireChatPost> {
                 child: const Icon(Icons.person, size: 40, color: Colors.white),
               ),
               const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.user,
-                    style: TextStyle(color: Colors.grey[300]),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.message,
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                      children: [
-                        LikeButton(
-                          isLiked: isLiked,
-                          onTap: toggleLike,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          widget.likes.length.toString(),
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        RetweetButton(
-                          isRetweeted: isRetweeted,
-                          onTap: toggleRetweet,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          widget.retweets.length.toString(),
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        SignetButton(
-                          isSigned: isSigned,
-                          onTap: toggleSignet,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          widget.signets!.length.toString(),
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                      ]),
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.user,
+                      style: TextStyle(color: Colors.grey[300]),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      widget.message,
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                        children: [
+                          LikeButton(
+                            isLiked: isLiked,
+                            onTap: toggleLike,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            widget.likes.length.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          RetweetButton(
+                            isRetweeted: isRetweeted,
+                            onTap: toggleRetweet,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            widget.retweets.length.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          SignetButton(
+                            isSigned: isSigned,
+                            onTap: toggleSignet,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            widget.signets!.length.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                        ]),
+                  ],
+                ),
               ),
               if (widget.user == currentUser.email)
                 DeleteButton(onTap: deletePost)

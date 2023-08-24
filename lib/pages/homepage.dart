@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firechat/components/drawer.dart';
 import 'package:firechat/components/firechat_posts.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +40,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  // go to profile page
+  void goToProfilePage() {
+    Navigator.pop(context);
+    Navigator.pushNamed(context, '/profile');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +57,10 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.grey.shade300),
         ),
         elevation: 0,
-        actions: [
-          IconButton(onPressed: signOut, icon: const Icon(Icons.logout))
-        ],
+      ),
+      drawer: MyDrawer(
+        onProfileTap: goToProfilePage,
+        onSignOut: signOut,
       ),
       body: Center(
         child: Column(children: [
@@ -76,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                       postId: post.id,
                       likes: List<String>.from(post['Likes'] ?? []),
                       retweets: List<String>.from(post['Retweets'] ?? []),
-                      signets: List<String>.from(post['Signets']?? []),
+                      signets: List<String>.from(post['Signets'] ?? []),
                       //time: post['time']
                     );
                   },

@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firechat/auth/auth.dart';
 import 'package:firechat/firebase_options.dart';
+import 'package:firechat/pages/homepage.dart';
+import 'package:firechat/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -20,6 +22,11 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const AuthPage(),
+      routes: {
+        '/homepage': (context) => const HomePage(),
+        '/profile': (context) => const ProfilePage(),
+        //'/settings': (context) => const SettingsPage(),
+      },
     );
   }
 }
