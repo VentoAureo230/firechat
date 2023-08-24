@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final currentUser = FirebaseAuth.instance.currentUser;
+  final currentUser = FirebaseAuth.instance.currentUser!;
 
   final textController = TextEditingController();
 
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   void postFirechat() {
     if (textController.text.isNotEmpty) {
       FirebaseFirestore.instance.collection("User Posts").add({
-        'UserEmail': currentUser?.email,
+        'UserEmail': currentUser.email,
         'Message': textController.text,
         'Likes': [],
         'Retweets': [],
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               child: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection("User Posts")
-                .orderBy("TimeStamp", descending: false)
+                .orderBy("TimeStamp", descending: true)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {

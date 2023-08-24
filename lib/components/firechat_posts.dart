@@ -66,7 +66,7 @@ class _FireChatPostState extends State<FireChatPost> {
         context: context,
         builder: (context) => AlertDialog(
               title: const Text("Delete post"),
-              content: const Text("Are you sure ?"),
+              content: const Text("Are you sure ? Deleting post cannot be undone."),
               actions: [
                 // Cancel
                 TextButton(
@@ -163,7 +163,6 @@ class _FireChatPostState extends State<FireChatPost> {
                     height: 10,
                   ),
                   Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         LikeButton(
                           isLiked: isLiked,
