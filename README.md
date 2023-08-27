@@ -5,7 +5,7 @@ It's not meant to be used in real condition. If you ever try it out, please make
 
 ## Requirements :
 
-- Latest Flutter DSK
+- Latest Flutter SDK
 - Having a phone plugged to your PC will improve performance and rendering
   
 ## To run this project :
