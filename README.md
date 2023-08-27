@@ -1,16 +1,14 @@
 # firechat
 
-A new Flutter project.
+This project is somewhat social application. You've got the main page that fetch all users posts, and profile page. This is still in developpement for learning purposes. 
+It's not meant to be used in real condition. If you ever try it out, please make sure to sign-in with a FAKE email address and a RANDOM password.
 
-## Getting Started
+## Requirements :
 
-This project is a starting point for a Flutter application.
+- Latest Flutter DSK
+- Having a phone plugged to your PC will improve performance and rendering
+  
+## To run this project :
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Dowload the repository
+- In a terminal type ```flutter run``` 
