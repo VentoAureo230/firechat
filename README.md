@@ -6,7 +6,7 @@ It's not meant to be used in real condition. If you ever try it out, please make
 ## Requirements :
 
 - Latest Flutter SDK
-- Having a phone plugged to your PC will improve performance and rendering
+- Having a phone (Android is working, I couldn't test on IPhone since did not code this on a Mac) plugged to your PC will improve performance and rendering
   
 ## To run this project :
 
